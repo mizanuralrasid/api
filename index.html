@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Call PHP API</title>
-</head>
-<body>
-
-<h2>Student Data</h2>
-<div id="result"></div>
-
 <script>
-fetch("https://mizanurislam.infinityfree.me/backend/api.php")
-.then(response => response.json())
+fetch("https://mizanurislam.infinityfree.me/backend/api.php", {
+    method: "GET",
+    mode: "cors"
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error("Network response was not ok");
+    }
+    return response.json();
+})
 .then(data => {
     document.getElementById("result").innerHTML = data.name;
 })
-.catch(error => console.error(error));
+.catch(error => {
+    console.error("Error:", error);
+});
 </script>
-
-</body>
-</html>
