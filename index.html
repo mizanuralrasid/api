@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Call PHP API</title>
+</head>
+<body>
+
+<h2>Student Data</h2>
+<div id="result"></div>
+
+<script>
+fetch("https://mizanurislam.infinityfree.me/backend/api.php")
+.then(response => response.json())
+.then(data => {
+    document.getElementById("result").innerHTML = data.name;
+})
+.catch(error => console.error(error));
+</script>
+
+</body>
+</html>
