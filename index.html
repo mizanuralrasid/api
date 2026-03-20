@@ -1,18 +1,18 @@
+<div id="result">Loading data...</div>
+
 <script>
-fetch("https://mizanurislam.infinityfree.me/backend/api.php", {
-    method: "GET",
-    mode: "cors"
-})
+fetch("https://mizanurislam.infinityfree.me/backend/api.php")
 .then(response => {
     if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Server returned " + response.status);
     }
     return response.json();
 })
 .then(data => {
-    document.getElementById("result").innerHTML = data.name;
+    document.getElementById("result").innerHTML = "Name: " + data.name + "<br>Class: " + data.class;
 })
 .catch(error => {
-    console.error("Error:", error);
+    document.getElementById("result").innerHTML = "Error: " + error.message;
+    console.error("Full Error:", error);
 });
 </script>
